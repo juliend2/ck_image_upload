@@ -8,14 +8,14 @@ module Joiedmin::AdminApplications
     set :public, File.dirname(__FILE__) + "/public"
     set :upload_path, '/uploads/images'
 
-    post '/admin/upload' do
+    post '/upload' do
       unless params[:upload] &&
              (tmpfile = params[:upload][:tempfile]) &&
              (name = params[:upload][:filename])
         return "No file selected"
       end
       # TODO: check that we have the "image" folder already there before uploading
-      directory = "public/uploads/images"
+      directory = "public#{settings.upload_path}"
       path = File.join(directory, name)
       # We're using a "while" because a plain f.write(tmpfile.read) would use 
       # as much RAM as the size of the attachment.
@@ -29,7 +29,7 @@ module Joiedmin::AdminApplications
       </script>"
     end
     
-    get '/admin/uploaded_images' do
+    get '/uploaded_images' do
       @images = []
       basedir = "./public#{settings.upload_path}"
       contains = Dir.new(basedir).entries

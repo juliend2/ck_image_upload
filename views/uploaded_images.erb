@@ -25,7 +25,7 @@
 </head>
 <body style="margin: 0px; padding: 0px;">
   <script type="text/javascript">	  
-    var upload_path = "/admin/uploads/images";
+    var upload_path = "/admin/ck_image_upload<%= settings.upload_path %>";
     
     function setUrl(url) 
     {  
@@ -116,7 +116,7 @@
                 <tr>
                   <td align="center" valign="middle">
                     <%# image_tag(asset.url_thumb, :alt => asset.url_content, :title => asset.filename, :onerror=>"this.src='/javascripts/ckeditor/images/ckfnothumb.gif'", :class=>'image') %>
-                    <img src="/uploads/images/<%= image %>" alt="/uploads/images/<%= image %>" title="<%= image %>" class="image" />
+                    <img src="<%= settings.upload_path %>/<%= image %>" alt="<%= settings.upload_path %>/<%= image %>" title="<%= image %>" class="image" />
                   </td>
                  </tr>
                </tbody>

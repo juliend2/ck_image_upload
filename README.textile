@@ -1,0 +1,13 @@
+h1. CK Image Upload
+
+h2. Installation and Configuration
+
+# You need to use Joiedmin (coming soon, but you can easily modify it to work without it).
+# clone the repository inside you sinatra project so that you have ck_image_upload/ folder inside it.
+# Add the following block to your config.ru:
+
+pre. map '/admin/ck_image_upload' do
+  run Joiedmin::AdminApplications::CKImageUpload
+end
+
+
