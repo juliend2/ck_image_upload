@@ -2,14 +2,25 @@ h1. CK Image Upload
 
 h2. Installation and Configuration
 
-# You need to use Joiedmin (coming soon, but you can easily modify it to work without it).
-# clone the repository inside you sinatra project so that you have ck_image_upload/ folder inside it.
-# in your /public/ folder, ensure you have uploads/images/ and that it's writable
-# in you app, require 'ck_image_upload/ck_image_upload'
-# Add the following block to your config.ru:
+* You need to use Joiedmin (coming soon, but you can easily modify it to work without it).
+* clone the repository inside you sinatra project so that you have ck_image_upload/ folder inside it.
+* in your /public/ folder, ensure you have uploads/images/ and that it's writable
+* in you app, require 'ck_image_upload/ck_image_upload'
+* Add the following block to your config.ru:
 
 pre. map '/admin/ck_image_upload' do
   run Joiedmin::AdminApplications::CKImageUpload
 end
+
+* In the JavaScript where you configure ckeditor, make sure that you set the filebrowserImageBrowseUrl and the filebrowserImageUploadUrl options with the proper values and that you include "Image" into the toolbar option. It should look a bit like this (considering that you're using the "Basic" toolbar):
+
+pre. toolbar_Basic: [
+  ['Source', '-', 'Bold', 'Italic', 'Styles', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-','MediaEmbed','Image','-','About']
+],
+filebrowserImageUploadUrl: '/admin/ck_image_upload/upload?type=Images',
+filebrowserImageBrowseUrl: '/admin/ck_image_upload/uploaded_images'
+
+
+
 
 
