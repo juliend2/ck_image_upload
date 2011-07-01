@@ -20,7 +20,4 @@ pre. toolbar_Basic: [
 filebrowserImageUploadUrl: '/admin/ck_image_upload/upload?type=Images',
 filebrowserImageBrowseUrl: '/admin/ck_image_upload/uploaded_images'
 
-
-
-
-
+* Copy public/ckeditor/css and public/ckeditor/swfupload inside of your app's ckeditor folder.
